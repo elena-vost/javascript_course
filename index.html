@@ -6,25 +6,31 @@
     <title>VueJS</title>
     <link rel="stylesheet" href="">
     <script src="vue.js"></script>
-    <script src="style.css"></script>
 </head>
 
 <body>
     <div id="app">
-        <p v-if="show">U can see me</p>
-        <p v-else>Now u see me?</p>
-        <p>Do u also see me?</p>
-        <template v-if="show">
-            <h1>Heading</h1>
-            <p>Inside a template</p>
-        </template>
-        <button @click="show = !show">Switch</button>
+        <ul>
+            <li v-for="ingredient in ingredients">{{ ingredient }}</li>
+        </ul>
     </div>
     <script>
         new Vue({
             el: "#app",
             data: {
-                show: true
+                ingredients: ['meat', 'fruit', 'cookies'],
+                persons: [{
+                        name: "max",
+                        age: 23,
+                        color: "red"
+                    },
+                    {
+                        name: "sam",
+                        age: 43,
+                        color: "blue"
+                    }
+
+                ]
             }
 
         });
