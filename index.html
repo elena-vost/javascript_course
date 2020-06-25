@@ -6,28 +6,27 @@
     <title>VueJS</title>
     <link rel="stylesheet" href="">
     <script src="vue.js"></script>
+    <script src="style.css"></script>
 </head>
 
 <body>
     <div id="app">
-        <button @click="changeLink">Ckick to change link</button>
-        <a :href="link">Link</a>
+        <p v-if="show">U can see me</p>
+        <p v-else>Now u see me?</p>
+        <p>Do u also see me?</p>
+        <button @click="show = !show">Switch</button>
     </div>
     <script>
         new Vue({
             el: "#app",
             data: {
-                link: "http://googl.com"
-            },
-            methods: {
-                changeLink: function() {
-                    this.link = 'http://apple.com'
-                }
+                show: true
             }
 
         });
 
     </script>
+
 </body>
 
 </html>
