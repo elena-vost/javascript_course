@@ -17,39 +17,45 @@ new Vue({
             if (this.checkWin()) {
                 return;
             }
+            this.monsterAttack();
+        },
+        specialAttack: function () {
+            this.monsterHealth -= this.calculateDamage(10, 20);
+            if (this.checkWin()) {
+                return;
+            }
+            this.monsterAttack();
+        },
+        heal: function () {
+
+        },
+        giveUp: function () {
+
+        },
+        monsterAttack: function () {
             this.playerHealth -= this.calculateDamage(5, 12);
             this.checkWin();
-
-    },
-    specialAttack: function () {
-
-    },
-    heal: function () {
-
-    },
-    giveUp: function () {
-
-    },
-    calculateDamage: function (min, max) {
-        return Math.max(Math.floor(Math.random() * max) + 1, min);
-    },
-    checkWin: function () {
-        if (this.monsterHealth <= 0) {
-            if (confirm('U won! New game?')) {
-                this.startGame();
-            } else {
-                this.gameIsRunning = false;
+        },
+        calculateDamage: function (min, max) {
+            return Math.max(Math.floor(Math.random() * max) + 1, min);
+        },
+        checkWin: function () {
+            if (this.monsterHealth <= 0) {
+                if (confirm('U won! New game?')) {
+                    this.startGame();
+                } else {
+                    this.gameIsRunning = false;
+                }
+                return;
+            } else if (this.playerHealth <= 0) {
+                if (confirm('U lost! New game?')) {
+                    this.startGame();
+                } else {
+                    this.gameIsRunning = false;
+                }
+                return true;
             }
-            return;
-        } else if (this.playerHealth <= 0) {
-            if (confirm('U lost! New game?')) {
-                this.startGame();
-            } else {
-                this.gameIsRunning = false;
-            }
-            return true;
+            return false;
         }
-        return false;
     }
-}
 });
